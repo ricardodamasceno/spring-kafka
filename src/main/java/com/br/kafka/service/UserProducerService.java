@@ -4,6 +4,7 @@ import com.br.kafka.config.KafkaPropertiesConfig;
 import com.br.kafka.utils.StringUtils;
 import com.br.kafka.vo.UserRequestVO;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
@@ -14,6 +15,7 @@ import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 @Service
+@Slf4j
 public class UserProducerService {
 
     @Autowired
@@ -39,7 +41,7 @@ public class UserProducerService {
             ex.printStackTrace();
             return;
         }
-        System.out.println("Message was sent to topic: " + data.topic() + " - Partition: " + data.partition() + " - Offset: " + data.offset());
+        log.info("Message was sent to topic: " + data.topic() + " - Partition: " + data.partition() + " - Offset: " + data.offset());
     }
 
 }
