@@ -3,7 +3,7 @@ This is a simple application ready to produce and consume events ok Kafka
 
 ## How to use
 
-There's an end-point send user information to a topic on Kafka.
+There's an end-point that sends user information to a topic on Kafka.
 
 **URL:** http://localhost:8080/user ( POST )
 
