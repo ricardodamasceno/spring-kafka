@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -28,7 +29,7 @@ public class UserProducerService {
 
     private void sendMessage(String value) throws ExecutionException, InterruptedException {
         var producer = new KafkaProducer<String, String>(KafkaPropertiesConfig.getUserProducerProperties());
-        var record = new ProducerRecord<String, String>( KafkaPropertiesConfig.USER_TOPIC_NAME, value, value );
+        var record = new ProducerRecord<String, String>(KafkaPropertiesConfig.USER_TOPIC_NAME, UUID.randomUUID().toString(), value);
         sendEvent(producer, record, value);
     }
 

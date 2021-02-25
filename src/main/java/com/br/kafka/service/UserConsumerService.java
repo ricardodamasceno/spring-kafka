@@ -28,8 +28,8 @@ public class UserConsumerService {
     private void printRecords(ConsumerRecords<String, String> records){
         records.forEach(record -> {
             System.out.println("\n----- Message consumed -----");
-            System.out.println(record.key());
-            System.out.println(record.value());
+            System.out.println("Key: " + record.key());
+            System.out.println("Value: " + record.value());
         });
     }
 
