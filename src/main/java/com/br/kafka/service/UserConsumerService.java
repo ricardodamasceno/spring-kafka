@@ -3,21 +3,20 @@ package com.br.kafka.service;
 import com.br.kafka.config.KafkaPropertiesConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.Duration;
-import java.util.Collections;
 
 @Service
 @Slf4j
 public class UserConsumerService {
 
-    public void consumeUserMessages(){
-        var consumer = new KafkaConsumer<String, String>(KafkaPropertiesConfig.getUserConsumerProperties());
-        consumer.subscribe(Collections.singletonList(KafkaPropertiesConfig.USER_TOPIC_NAME));
+    @Autowired
+    private KafkaService kafkaService;
 
-        var records = consumer.poll(Duration.ofMillis(10000));
+    public void consumeUserMessages(){
+
+        var records = kafkaService.consumeMessages(KafkaPropertiesConfig.getUserConsumerProperties(), KafkaPropertiesConfig.USER_TOPIC_NAME);
+
         if(!records.isEmpty()){
             printRecords(records);
         } else {
