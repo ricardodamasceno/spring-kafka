@@ -2,7 +2,6 @@ package com.br.kafka.controller;
 
 import com.br.kafka.service.UserProducerService;
 import com.br.kafka.vo.UserRequestVO;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,8 +18,13 @@ public class UserController {
     private UserProducerService userProducerService;
 
     @PostMapping
-    public void sendMessage(@RequestBody UserRequestVO request) throws ExecutionException, InterruptedException, JsonProcessingException {
+    public void sendMessage(@RequestBody UserRequestVO request) throws ExecutionException, InterruptedException {
         userProducerService.saveUser(request);
+    }
+
+    @PostMapping("/insert-data")
+    public void insertData() {
+        userProducerService.insertData();
     }
 
 }
