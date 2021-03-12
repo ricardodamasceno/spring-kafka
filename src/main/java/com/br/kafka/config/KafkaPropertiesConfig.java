@@ -7,7 +7,6 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
-import java.util.UUID;
 
 public class KafkaPropertiesConfig {
 
@@ -15,7 +14,7 @@ public class KafkaPropertiesConfig {
     private static final String USER_SERVICE_CONSUMER = "USER_SERVICE_CONSUMER";
     private static final String USER_SERVICE_CONSUMER_GROUP = "USER_SERVICE_CONSUMER_GROUP";
 
-    public  static final String USER_TOPIC_NAME = "KAFKA_USER_TOPIC_EXAMPLE";
+    public  static final String USER_TOPIC_NAME = "KAFKA_USER_TOPIC";
 
     public static Properties getUserProducerProperties(){
         var properties = new Properties();
